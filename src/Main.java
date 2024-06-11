@@ -22,27 +22,38 @@ class Main {
         String operator = parts[1];
         String operand2 = parts[2];
 
+
+
         boolean isOperand1Roman = RomanNumeral.isRoman(operand1);
         boolean isOperand2Roman = RomanNumeral.isRoman(operand2);
 
         if (isOperand1Roman && isOperand2Roman) {
             int num1 = RomanNumeral.valueOf(operand1).getValue();
             int num2 = RomanNumeral.valueOf(operand2).getValue();
+            if (num1 < 1 || num2 < 1 || num1 >= 11 || num2 >= 11) {
+                throw new CalculatorException("Один из введенных операндов не соответствует условиям. Введите числа от 1 до 10 включительно ");
+            }
+
             int result = performOperation(num1, num2, operator);
 
             if (result < 1) {
-                throw new CalculatorException("Результат работы меньше единицы, выбрасывается исключение.");
+                throw new CalculatorException("Результат работы меньше единицы.");
             }
 
             return RomanNumeral.toRoman(result);
         } else if (!isOperand1Roman && !isOperand2Roman) {
             int num1 = Integer.parseInt(operand1);
             int num2 = Integer.parseInt(operand2);
+            if (num1 < 1 || num2 < 1 || num1 >= 11 || num2 >= 11) {
+                throw new CalculatorException("Один из введенных операндов не соответствует условиям. Введите числа от 1 до 10 включительно ");
+            }
+
             int result = performOperation(num1, num2, operator);
 
             return String.valueOf(result);
         } else {
-            throw new CalculatorException("Используются одновременно разные системы счисления.");
+            throw new CalculatorException("Используются одновременно разные системы счисления, либо введен некорректный формат чисел." +
+                    " Пожалуйста, вводите корректно одновременно только арабские или одновременно римские числа.");
         }
     }
 
@@ -55,9 +66,7 @@ class Main {
             case "*":
                 return num1 * num2;
             case "/":
-                if (num2 == 0) {
-                    throw new CalculatorException("Деление на ноль.");
-                }
+
                 return num1 / num2;
             default:
                 throw new CalculatorException("Неподходящая математическая операция.");
