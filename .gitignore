@@ -1,8 +1,11 @@
 ### IntelliJ IDEA ###
+.idea/
+1.Calculator.iml
+
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-
+.gitignore
 ### Eclipse ###
 .apt_generated
 .classpath
