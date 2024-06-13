@@ -1,11 +1,11 @@
 ### IntelliJ IDEA ###
-.idea/
-1.Calculator.iml
+echo .idea/
+echo 1.Calculator.iml
 
-out/
+echo out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-.gitignore
+echo .gitignore
 ### Eclipse ###
 .apt_generated
 .classpath
@@ -29,4 +29,4 @@ bin/
 .vscode/
 
 ### Mac OS ###
-.DS_Store
+echo .DS_Store
